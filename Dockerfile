@@ -6,7 +6,7 @@ RUN apt update && apt install -y tzdata
 RUN ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime && dpkg-reconfigure --frontend noninteractive tzdata
 
 # Install dependencies
-RUN apt update && apt install -y nginx mariadb-server php php-cli php-mysql php-gd php-mbstring php-xml php-bcmath php-curl php-zip php-tokenizer unzip curl git composer
+RUN apt update && apt install -y nginx mariadb-server mariadb-client php php-cli php-mysql php-gd php-mbstring php-xml php-bcmath php-curl php-zip php-tokenizer unzip curl git composer
 
 # Setup working dir
 WORKDIR /var/www

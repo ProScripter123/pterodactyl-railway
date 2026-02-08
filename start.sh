@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Start MySQL
-service mysql start
+mysqld_safe --datadir=/var/lib/mysql &
+sleep 10
 
 # Buat DB default
 mysql -e "CREATE DATABASE IF NOT EXISTS panel;"
