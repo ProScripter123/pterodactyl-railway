@@ -6,7 +6,13 @@ RUN apt update && apt install -y tzdata
 RUN ln -fs /usr/share/zoneinfo/Asia/Jakarta /etc/localtime && dpkg-reconfigure --frontend noninteractive tzdata
 
 # Install dependencies
-RUN apt update && apt install -y nginx mariadb-server mariadb-client php php-cli php-mysql php-gd php-mbstring php-xml php-bcmath php-curl php-zip php-tokenizer unzip curl git composer
+RUN apt update && apt install -y software-properties-common \
+    && add-apt-repository ppa:ondrej/php \
+    && apt update \
+    && apt install -y nginx mariadb-server mariadb-client sqlite3 \
+       php8.3 php8.3-cli php8.3-common php8.3-mysql php8.3-gd php8.3-mbstring \
+       php8.3-xml php8.3-bcmath php8.3-curl php8.3-zip php8.3-tokenizer \
+       unzip curl git composer
 
 # Setup working dir
 WORKDIR /var/www
