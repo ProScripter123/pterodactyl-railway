@@ -12,7 +12,7 @@ RUN apt update && apt install -y nginx mariadb-server php php-cli php-mysql php-
 WORKDIR /var/www
 
 # Clone panel
-RUN git clone https://github.com/pterodactyl/panel.git .
+RUN rm -rf /var/www/* && git clone https://github.com/pterodactyl/panel.git .
 RUN cp .env.example .env && composer install --no-dev --optimize-autoloader
 
 # Setup environment
